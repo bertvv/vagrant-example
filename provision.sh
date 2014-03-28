@@ -9,8 +9,3 @@ yum install -y httpd php
 service httpd start
 chkconfig httpd on
 
-# Write a test script
-cat > /var/www/html/index.php << EOF
-<?php phpinfo(); ?>
-EOF
-

@@ -18,6 +18,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     ip: '192.168.56.65',
     netmask: '255.255.255.0'
 
+  # Share folder with VM
+  config.vm.synced_folder 'html', '/var/www/html'
+
   # VirtualBox settings
   config.vm.provider :virtualbox do |vb|
     vb.name = HOST_NAME
