@@ -27,6 +27,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   # Provisioning with shell script
-  config.vm.provision 'shell', path: 'provision.sh'
+  config.vm.provision 'shell', path: 'shell/provision.sh'
 
 end
