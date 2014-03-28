@@ -23,4 +23,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     vb.name = HOST_NAME
   end
 
+  # Provisioning with shell script
+  config.vm.provision 'shell', path: 'provision.sh'
+
 end
