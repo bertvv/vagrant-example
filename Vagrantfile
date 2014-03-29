@@ -7,26 +7,25 @@ HOST_NAME = 'box001'
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
-  # Host name
-  config.vm.hostname = HOST_NAME
-
-  # Base Box
   config.vm.box = 'alphainternational/centos-6.5-x64'
 
-  # Add a host-only network interface
-  config.vm.network :private_network,
-    ip: '192.168.56.65',
-    netmask: '255.255.255.0'
+  config.vm.define HOST_NAME do |node|
 
-  # Share folder with VM
-  config.vm.synced_folder 'html', '/var/www/html'
+    node.vm.hostname = HOST_NAME
+    node.vm.network :private_network,
+      ip: '192.168.56.65',
+      netmask: '255.255.255.0'
 
-  # VirtualBox settings
-  config.vm.provider :virtualbox do |vb|
-    vb.name = HOST_NAME
+    node.vm.synced_folder 'html', '/var/www/html'
+
+    node.vm.provider :virtualbox do |vb|
+      vb.name = HOST_NAME
+    end
+
+    # Provisioning with Ansible
+    node.vm.provision 'ansible' do |ansible|
+      ansible.playbook = 'ansible/site.yml'
+      ansible.inventory_path = 'ansible/hosts'
+    end
   end
-
-  # Provisioning with shell script
-  config.vm.provision 'shell', path: 'shell/provision.sh'
-
 end

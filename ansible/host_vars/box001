@@ -1,0 +1,6 @@
+---
+# file host_vars/box001
+dbname: somedb
+dbuser: someusr
+dbpasswd: somepw
+

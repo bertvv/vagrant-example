@@ -1,0 +1,15 @@
+---
+# Disable IPv6: http://wiki.centos.org/FAQ/CentOS6
+- name: Disable IPv6 (1)
+  command: echo 1 | sudo tee /proc/sys/net/ipv6/conf/all/disable_ipv6
+
+- name: Disable IPv6 (2)
+  command: echo 1 | sudo tee /proc/sys/net/ipv6/conf/default/disable_ipv6
+
+- name: Install base packages
+  yum: pkg={{item}} state=installed
+  with_items:
+    - libselinux-python
+
+- name: Make disabling IPv6 persistent
+  copy: src=etc_sysctl.conf dest=/etc/sysctl.conf owner=root group=root mode=0644
