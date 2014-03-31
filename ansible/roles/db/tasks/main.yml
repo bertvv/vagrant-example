@@ -14,4 +14,4 @@
   mysql_db: name={{ dbname }} state=present
 
 - name: Create application database user
-  mysql_user: name={{ dbuser }} password={{ dbpasswd }} priv=*.*:ALL host='localhost' state=present
+  mysql_user: name={{ dbuser }} password={{ dbpasswd }} priv=*.*:ALL host='%' state=present

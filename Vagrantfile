@@ -19,6 +19,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
       node.vm.provider :virtualbox do |vb|
         vb.name = host[:name]
+        vb.customize ['modifyvm', :id, '--memory', 256]
       end
 
       node.vm.provision 'ansible' do |ansible|

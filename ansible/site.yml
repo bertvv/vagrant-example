@@ -1,8 +1,14 @@
 ---
+# file site.yml
 - hosts: box001
   sudo: true
   roles:
     - common
     - web
+
+- hosts: box002
+  sudo: true
+  roles:
+    - common
     - db
 
