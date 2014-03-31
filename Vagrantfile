@@ -3,29 +3,29 @@
 
 VAGRANTFILE_API_VERSION = '2'
 
-HOST_NAME = 'box001'
-
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
-  config.vm.box = 'alphainternational/centos-6.5-x64'
-
-  config.vm.define HOST_NAME do |node|
-
-    node.vm.hostname = HOST_NAME
+  config.vm.define 'box001' do |node|
+    node.vm.hostname = 'box001'
+    node.vm.box = 'alphainternational/centos-6.5-x64'
     node.vm.network :private_network,
       ip: '192.168.56.65',
       netmask: '255.255.255.0'
 
-    node.vm.synced_folder 'html', '/var/www/html'
+    node.vm.provider :virtualbox do |vb|
+      vb.name = 'box001'
+    end
+  end
+
+  config.vm.define 'box002' do |node|
+    node.vm.hostname = 'box002'
+    node.vm.box = 'alphainternational/centos-6.5-x64'
+    node.vm.network :private_network,
+      ip: '192.168.56.66',
+      netmask: '255.255.255.0'
 
     node.vm.provider :virtualbox do |vb|
-      vb.name = HOST_NAME
-    end
-
-    # Provisioning with Ansible
-    node.vm.provision 'ansible' do |ansible|
-      ansible.playbook = 'ansible/site.yml'
-      ansible.inventory_path = 'ansible/hosts'
+      vb.name = 'box002'
     end
   end
 end
