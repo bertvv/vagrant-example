@@ -5,7 +5,7 @@ node box001 inherits default {
   class { 'apache': }
   class { 'apache::mod::php': }
 
-  package { 'php-mysql':
+  package { [ 'php-mysql', 'php-xml' ]:
     ensure => installed,
   }
 
