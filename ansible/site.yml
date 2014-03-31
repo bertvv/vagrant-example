@@ -3,6 +3,6 @@
   sudo: true
   roles:
     - common
-    - apache
-      #    - db
+    - web
+    - db
 

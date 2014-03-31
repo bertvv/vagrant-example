@@ -1,0 +1,8 @@
+---
+# file group_vars/all
+
+# Application database
+dbname: appdb
+dbuser: appusr
+dbpasswd: CaxWeikun6
+
