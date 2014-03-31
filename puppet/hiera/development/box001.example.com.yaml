@@ -1,0 +1,5 @@
+---
+mysql::appdb: 'appdb'
+mysql::user: 'dbusr'
+mysql::password: 'letmein'
+

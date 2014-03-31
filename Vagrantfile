@@ -24,6 +24,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     node.vm.provision 'puppet' do |puppet|
       puppet.manifests_path = 'puppet/manifests'
       puppet.manifest_file = 'site.pp'
+      puppet.options = [ '--environment development' ]
     end
   end
 end

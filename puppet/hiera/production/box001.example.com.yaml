@@ -1,0 +1,5 @@
+---
+mysql::appdb: 'db72437'
+mysql::user:  'u440380'
+mysql::password: 'ifwoHaffEtHafwivIj7'
+

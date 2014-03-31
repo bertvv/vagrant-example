@@ -12,10 +12,12 @@ node box001 inherits default {
   # MySQL
   include '::mysql::server'
 
-  mysql::db { 'appdb':
-    user     => 'dbusr',
-    password => 'vaygDeesh1',
-    host     => 'localhost',
+  $appdb = hiera('mysql::appdb')
+
+  mysql::db { $appdb:
+    user     => hiera('mysql::user'),
+    password => hiera('mysql::password'),
+    host     => hiera('mysql::host'),
   }
 
 }
