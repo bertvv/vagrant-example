@@ -2,29 +2,28 @@
 # vi: set ft=ruby :
 
 VAGRANTFILE_API_VERSION = '2'
-hosts = [
-  { name: 'box001', ip: '192.168.56.65' },
-  { name: 'box002', ip: '192.168.56.66' }
-]
+HOST_NAME = 'box001'
+DOMAIN = 'example.com'
+HOST_IP = '192.168.56.65'
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = 'alphainternational/centos-6.5-x64'
-  hosts.each do |host|
-    config.vm.define host[:name] do |node|
-      node.vm.hostname = host[:name]
-      node.vm.network :private_network,
-        ip: host[:ip],
-        netmask: '255.255.255.0'
-      node.vm.synced_folder 'html', '/var/www/html'
+  config.vm.define HOST_NAME do |node|
+    node.vm.hostname = "#{HOST_NAME}.#{DOMAIN}"
+    node.vm.network :private_network,
+      ip: HOST_IP,
+      netmask: '255.255.255.0'
+    node.vm.synced_folder 'html', '/var/www/html'
+    node.vm.synced_folder 'puppet', '/etc/puppet'
 
-      node.vm.provider :virtualbox do |vb|
-        vb.name = host[:name]
-        vb.customize ['modifyvm', :id, '--memory', 256]
-      end
+    node.vm.provider :virtualbox do |vb|
+      vb.name = HOST_NAME
+      vb.customize ['modifyvm', :id, '--memory', 256]
+    end
 
-      node.vm.provision 'ansible' do |ansible|
-        ansible.playbook = 'ansible/site.yml'
-      end
+    node.vm.provision 'puppet' do |puppet|
+      puppet.manifests_path = 'puppet/manifests'
+      puppet.manifest_file = 'site.pp'
     end
   end
 end

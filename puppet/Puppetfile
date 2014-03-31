@@ -1,0 +1,11 @@
+# Puppetfile -- Configuration for librarian-puppet
+# Bootstrap by running `librarian-puppet init`
+
+forge "http://forge.puppetlabs.com"
+
+mod "puppetlabs/stdlib"
+mod "puppetlabs/concat"
+
+mod "puppetlabs/apache"
+mod "puppetlabs/mysql"
+
