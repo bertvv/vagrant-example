@@ -3,29 +3,24 @@
 
 VAGRANTFILE_API_VERSION = '2'
 
+hosts = [
+  { name: 'box001', ip: '192.168.56.65' },
+  { name: 'box002', ip: '192.168.56.66' }
+]
+
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
-  config.vm.define 'box001' do |node|
-    node.vm.hostname = 'box001'
-    node.vm.box = 'alphainternational/centos-6.5-x64'
-    node.vm.network :private_network,
-      ip: '192.168.56.65',
-      netmask: '255.255.255.0'
+  hosts.each do |host|
+    config.vm.define host[:name] do |node|
+      node.vm.hostname = host[:name]
+      node.vm.box = 'alphainternational/centos-6.5-x64'
+      node.vm.network :private_network,
+        ip: host[:ip],
+        netmask: '255.255.255.0'
 
-    node.vm.provider :virtualbox do |vb|
-      vb.name = 'box001'
-    end
-  end
-
-  config.vm.define 'box002' do |node|
-    node.vm.hostname = 'box002'
-    node.vm.box = 'alphainternational/centos-6.5-x64'
-    node.vm.network :private_network,
-      ip: '192.168.56.66',
-      netmask: '255.255.255.0'
-
-    node.vm.provider :virtualbox do |vb|
-      vb.name = 'box002'
+      node.vm.provider :virtualbox do |vb|
+        vb.name = host[:name]
+      end
     end
   end
 end
