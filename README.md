@@ -12,6 +12,14 @@ The example starts with a minimal `Vagrantfile` and is extended progressively. I
 
 `git checkout tags/checkout-nn`
 
+## Prerequisites
+
+In order to run the examples correctly, you should have installed:
+
+* **Git (duh)**. Windows users are encouraged to install and use `Git Bash`
+* **Vagrant 1.5.1** or newer. A lot has changed since version 1.5, so you need it to run the examples correctly.
+* **VirtualBox 4.3.10** or newer with the "default" [host-only network](http://askubuntu.com/questions/198452/no-host-only-adapter-selected-virtualbox/198467#198467) with IP 192.168.56.0/24
+
 ## License
 
 This work is licensed under the [MIT License](http://opensource.org/licenses/mit-license.php).
