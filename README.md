@@ -1,6 +1,6 @@
 # Vagrant examples
 
-This repository contains the source code of the hands-on examples in my tutorial on Vagrant, given at [LOADays](http://loadays.org/), 6 April 2014. The presentation itself can be found at <http://github.com/vagrant-presentation/>.
+This repository contains the source code of the hands-on examples in my tutorial on Vagrant, given at [LOADays](http://loadays.org/), 6 April 2014. The presentation itself can be found at <http://github.com/bertvv/vagrant-presentation/>.
 
 ## Trying out the examples
 
