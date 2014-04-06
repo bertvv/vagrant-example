@@ -8,9 +8,9 @@ To try out the examples yourself, clone this repository:
 
 `git clone git@github.com:bertvv/vagrant-example.git`
 
-The example starts with a minimal `Vagrantfile` and is extended progressively. In order to follow along with the tutorial, I created a few "checkpoints" throughout the presentation. If you see a slide mention `checkpoint-nn` (with `nn` a number), you can get the code at that point with
+The example starts with a minimal `Vagrantfile` that and is extended progressively. In order to follow along with the tutorial, I created a few "checkpoints" throughout the presentation. If you see a slide mention `checkpoint-nn` (with `nn` a number), you can get the code at that point with
 
-`git checkout tags/checkout-nn`
+`git checkout tags/checkpoint-nn`
 
 ## Prerequisites
 
